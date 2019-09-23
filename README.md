@@ -1,3 +1,4 @@
+
 # Data plane API
 
 This tree hosts the configuration and APIs that drive [Envoy](https://www.envoyproxy.io/). The
@@ -5,6 +6,17 @@ APIs are also in some cases used by other proxy solutions that aim to interopera
 systems and configuration generators that are built against this standard. Thus, we consider these a
 set of *universal data plane* APIs. See [this](https://medium.com/@mattklein123/the-universal-data-plane-api-d15cec7a)
 blog post for more information on the universal data plane concept.
+
+# Generating haskell types and datastructures
+
+The .proto files in the protos directory have been placed such that simply running the protoc compiler
+will generate the required code.
+
+```sh
+protoc --plugin=protoc-gen-haskell-protolens=<path to proto-lens-protoc>  --haskell-protolens_out=./<path to output folder> $(find protos -type f) --proto_path=./protos
+```
+
+
 
 # Repository structure
 
